@@ -1,0 +1,98 @@
+*,
+::after,
+::before {
+  padding: 0;
+  margin: 0;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  background: radial-gradient(#efed 30%, #fa6855 100%);
+}
+.btn {
+  padding: 10px;
+  background-color: blueviolet;
+  color: #fff;
+  font-weight: 700;
+  font-size: 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: 0.3s;
+}
+.btn:hover {
+  opacity: 1;
+}
+.toast {
+  position: absolute;
+  top: 30px;
+  right: -300px;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 12px;
+  border-left: 4px solid blueviolet;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  visibility: hidden;
+  transition: 0.3s linear;
+}
+.toast.active {
+  right: 10px;
+  visibility: visible;
+}
+.toast::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 98%;
+  height: 5px;
+  background-color: blueviolet;
+}
+.toast.active::after {
+  animation: moveBar 4s forwards ease-in-out;
+}
+@keyframes moveBar {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+}
+.toast .content {
+  display: flex;
+  flex-direction: column;
+}
+.toast span:first-of-type {
+  font-size: 20px;
+}
+.toast span:last-of-type {
+  font-size: 14px;
+  color: #777;
+}
+.toast .check {
+  color: blueviolet;
+  font-size: 20px;
+}
+.toast .close {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.toast .close:hover {
+  transform: scale(1.1);
+}
